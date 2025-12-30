@@ -192,7 +192,7 @@ bindsym $mod+r mode "resize"
 bar {
 	id bar-1
 	font pango:Fira Code Nerd Font Regular 10
-        status_command i3status -c ~/.config/i3status/i3status.conf
+  status_command i3status -c ~/.config/i3status/i3status.conf
 	mode hide
 	hidden_state hide
 	separator_symbol "<->"
@@ -200,7 +200,7 @@ bar {
 	workspace_min_width 20px
 
 
-	# Gruvbox Theme
+  # Gruvbox Theme
 	# colors {
 	# 	background #282828
 	# 	statusline #ebdbb2
@@ -210,24 +210,41 @@ bar {
 	# 	active_workspace   #3c3836 #3c3836 #ebdbb2
 	# 	inactive_workspace #282828 #282828 #928374
 	# 	urgent_workspace   #cc241d #cc241d #fbf1c7
-	#    		binding_mode       #d65d0e #d65d0e #fbf1c7
+	#   binding_mode       #d65d0e #d65d0e #fbf1c7
 	# }
+  
+  # Gruvbox more colorful
+  colors {
+	  background #1d2021
+	  statusline #fbf1c7
+	  separator  #bdae93
 
-	# Atom Theme
-	colors {
-    		background #282c34
-    		statusline #abb2bf
-    		separator  #5c6370
+	  focused_workspace  #fe8019 #fe8019 #282828
+	  active_workspace   #83a598 #83a598 #282828
+	  inactive_workspace #282828 #282828 #bdae93
+	  urgent_workspace   #fb4934 #fb4934 #fbf1c7
+	  binding_mode       #fabd2f #fabd2f #282828
+  }
 
-    		focused_workspace  #282c34 #61afef #282c34
-    		active_workspace   #282c34 #3e4451 #abb2bf
-    		inactive_workspace #282c34 #21252b #5c6370
-    		urgent_workspace   #282c34 #e06c75 #282c34
-    		binding_mode       #282c34 #c678dd #282c34
-	}
+
+# Atom Theme
+	# colors {
+	#    		background #282c34
+	#    		statusline #abb2bf
+	#    		separator  #5c6370
+	#
+	#    		focused_workspace  #282c34 #61afef #282c34
+	#    	  active_workspace   #282c34 #3e4451 #abb2bf
+	#    		inactive_workspace #282c34 #21252b #5c6370
+	#    		urgent_workspace   #282c34 #e06c75 #282c34
+	#    		binding_mode       #282c34 #c678dd #282c34
+	# }
 
 }
 
+
+# Start PICOM
+exec --no-startup-id picom --config ~/.config/picom/picom.conf -b
 
 # Custom workspace assignment
 assign [class="firefox"] $ws2
@@ -236,7 +253,7 @@ assign [class="firefox"] $ws2
 bindsym $mod+space exec --no-startup-id ~/.local/bin/ibus-toggle.sh
 
 # Set wallpaper
-exec --no-startup-id feh --bg-fill ~/.wallpapers/French_Vessel.jpg
+exec --no-startup-id feh --bg-fill ~/.wallpapers/Gruvbox_witcher.jpg
 
 # Open default browser
 bindsym $mod+b exec firefox
@@ -252,20 +269,65 @@ gaps inner 2
 # Status bar
 bindsym $mod+n bar hidden_state toggle
 
+# Screenshot
+bindsym Print exec --no-startup-id flameshot gui
+
+# set $screenshot $HOME/.local/bin/screenshot.sh
+
+# bindsym Print exec --no-startup-id $screenshot full
+# bindsym Shift+Print exec --no-startup-id $screenshot select
+# bindsym $mod+Print exec --no-startup-id $screenshot window
+
 # Custom Theme
 # Atom One Dark colors
-set $bg        #282c34
-set $fg        #abb2bf
-set $gray      #5c6370
-set $darkgray  #21252b
-set $blue      #61afef
-set $red       #e06c75
-set $purple   #c678dd
+# set $bg        #282c34
+# set $fg        #abb2bf
+# set $gray      #5c6370
+# set $darkgray  #21252b
+# set $blue      #61afef
+# set $red       #e06c75
+# set $purple   #c678dd
+#
+# # class                 border      background  text        indicator   child_border
+# client.focused          $blue       $blue       $bg         $blue       $blue
+# client.focused_inactive $darkgray   $darkgray   $fg         $gray       $darkgray
+# client.unfocused        $darkgray   $darkgray   $gray       $gray       $darkgray
+# client.urgent           $red        $red        $bg         $red        $red
+# client.placeholder      $darkgray   $darkgray   $fg         $darkgray   $darkgray
+
+# Gruvbox Theme
+# set $bg        #282828
+# set $fg        #ebdbb2
+# set $gray      #928374
+# set $darkgray  #1d2021
+# set $blue      #83a598
+# set $red       #fb4934
+# set $purple    #d3869b
+#
+# # class                 border      background  text        indicator   child_border
+# client.focused          $blue       $blue       $bg         $blue       $blue
+# client.focused_inactive $darkgray   $darkgray   $fg         $gray       $darkgray
+# client.unfocused        $darkgray   $darkgray   $gray       $gray       $darkgray
+# client.urgent           $red        $red        $bg         $red        $red
+# client.placeholder      $darkgray   $darkgray   $fg         $darkgray   $darkgray
+
+# Gruvbox more colorful
+set $bg        #282828
+set $fg        #fbf1c7
+set $gray      #bdae93
+set $darkgray  #1d2021
+set $blue      #8ec07c
+set $red       #fb4934
+set $purple    #d3869b
+
+# extra accent options (optional)
+set $yellow    #fabd2f
+set $orange    #fe8019
 
 # class                 border      background  text        indicator   child_border
-client.focused          $blue       $blue       $bg         $blue       $blue
-client.focused_inactive $darkgray   $darkgray   $fg         $gray       $darkgray
+client.focused          $orange     $orange     $bg         $yellow     $orange
+client.focused_inactive $blue       $darkgray   $fg         $blue       $darkgray
 client.unfocused        $darkgray   $darkgray   $gray       $gray       $darkgray
-client.urgent           $red        $red        $bg         $red        $red
-client.placeholder      $darkgray   $darkgray   $fg         $darkgray   $darkgray
+client.urgent           $red        $red        $bg         $yellow     $red
+client.placeholder      $purple     $darkgray   $fg         $purple     $darkgray
 
