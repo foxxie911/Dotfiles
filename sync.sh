@@ -13,10 +13,11 @@ for folder in "${folders[@]}"; do
   echo "Copied: ${folder}"
 done
 
-# Git commit
+# Git add and commit
 function gitcommit() {
   git add .
   git commit -m "$1"
+  git push -u origin
 }
 
 while [[ "$1" =~ ^- && ! "$1" == "--" ]]; do
