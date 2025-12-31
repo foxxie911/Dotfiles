@@ -1,0 +1,34 @@
+#!/bin/bash
+
+declare -A folders
+
+# config folder directories
+folders[i3]="$HOME/.config/i3"
+folders[i3status]="$HOME/.config/i3status"
+folders[picom]="$HOME/.config/picom"
+folders[kitty]="$HOME/.config/kitty"
+
+for folder in "${folders[@]}"; do
+  cp -r "$folder" ./
+  echo "Copied: ${folder}"
+done
+
+# Git commit
+function gitcommit() {
+  git add .
+  git commit -m "$1"
+}
+
+while [[ "$1" =~ ^- && ! "$1" == "--" ]]; do
+  case "$1" in
+  -m | --message)
+    shift
+    gitcommit "$1"
+    ;;
+  -v | --version)
+    echo "1.0"
+    ;;
+  esac
+  shift
+done
+if [[ "$1" == '--' ]]; then shift; fi
