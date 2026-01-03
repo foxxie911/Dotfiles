@@ -34,10 +34,6 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
-
-# Autostart iBus during startup
-exec --no-startup-id ibus-daemon -d
-
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
@@ -248,12 +244,12 @@ bar {
 # exec --no-startup-id picom --config ~/.config/picom/picom.conf -b
 exec --no-startup-id xcompmgr -n &
 
-# Start terminal on startup
-exec --no-satrtup-id kitty
-
 # Custom workspace assignment
 assign [class="firefox"]   $ws2
 assign [class="obsidian"]  $ws10 
+
+# Autostart iBus during startup
+exec --no-startup-id ibus-daemon -rxRd
 
 # iBus switch between English and Bangla
 bindsym $mod+space exec --no-startup-id ~/.local/bin/ibus-toggle.sh
