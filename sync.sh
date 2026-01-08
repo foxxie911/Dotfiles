@@ -8,6 +8,7 @@ folders[i3status]="$HOME/.config/i3status"
 folders[picom]="$HOME/.config/picom"
 folders[kitty]="$HOME/.config/kitty"
 folders[CustomBinary]="$HOME/.local/bin"
+folders[wallpapers]="$HOME/.wallpapers"
 
 for folder in "${folders[@]}"; do
   cp -r "$folder" ./
