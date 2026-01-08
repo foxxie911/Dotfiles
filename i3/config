@@ -275,7 +275,7 @@ bindsym $mod+n bar hidden_state toggle
 bindsym Print exec --no-startup-id flameshot gui
 
 # Obsidian
-bindsym $mod+o exec obsidian 
+bindsym $mod+o exec flatpak run md.obsidian.Obsidian
 
 # set $screenshot $HOME/.local/bin/screenshot.sh
 
