@@ -242,11 +242,12 @@ bar {
 
 # Start screen compositor
 # exec --no-startup-id picom --config ~/.config/picom/picom.conf -b
-exec --no-startup-id xcompmgr -n &
+# exec --no-startup-id xcompmgr -n &
 
 # Custom workspace assignment
-assign [class="firefox"]   $ws2
-assign [class="obsidian"]  $ws10 
+assign [class="firefox"]            $ws2
+assign [class="Mullvad Browser"]    $ws2
+assign [class="obsidian"]           $ws10 
 
 # Autostart iBus during startup
 exec --no-startup-id ibus-daemon -rxRd
@@ -258,14 +259,15 @@ bindsym $mod+space exec --no-startup-id ~/.local/bin/ibus-toggle.sh
 exec --no-startup-id feh --bg-fill ~/.wallpapers/Gruvbox_witcher.jpg
 
 # Open default browser
-bindsym $mod+b exec firefox
+# bindsym $mod+b exec firefox
+bindsym $mod+b exec $HOME/Application/mullvad-browser/Browser/mullvadbrowser
 
 # Custom window style
 title_align center
 default_border pixel 2
 
 # Custom gaps
-gaps outer 5
+# gaps outer 0
 gaps inner 2
 
 # Status bar
