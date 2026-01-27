@@ -4,6 +4,7 @@ declare -A folders
 
 # config folder directories
 folders[i3]="$HOME/.config/i3"
+folders[hypr]="$HOME/.config/hypr"
 folders[i3status]="$HOME/.config/i3status"
 folders[picom]="$HOME/.config/picom"
 folders[rofi]="$HOME/.config/rofi"

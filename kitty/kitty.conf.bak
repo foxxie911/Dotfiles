@@ -1,7 +1,4 @@
-# BEGIN_KITTY_THEME
-# Gruvbox Dark
-include current-theme.conf
-# END_KITTY_THEME
+# vim:fileencoding=utf-8:foldmethod=marker
 
 # BEGIN_KITTY_FONTS
 font_family      family="FiraCode Nerd Font"
@@ -10,7 +7,3 @@ italic_font      auto
 bold_italic_font auto
 # END_KITTY_FONTS
 
-# START_TRANSPARENCY
-background_opacity          0.8
-dynamic_background_opacity  yes
-# END_TRANSPARENCY
