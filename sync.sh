@@ -1,11 +1,12 @@
 #!/bin/bash
 
+# Define a dictionary to store folder paths
 declare -A folders
 
-# config folder directories
+# Specify config folder directories
 folders[i3]="$HOME/.config/i3"
 folders[hypr]="$HOME/.config/hypr"
-folders[ashell]="$HOME/.config/ashell/"
+folders[ashell]="$HOME/.config/ashell"
 folders[i3status]="$HOME/.config/i3status"
 folders[picom]="$HOME/.config/picom"
 folders[rofi]="$HOME/.config/rofi"
@@ -13,28 +14,44 @@ folders[kitty]="$HOME/.config/kitty"
 folders[CustomBinary]="$HOME/.local/bin"
 folders[wallpapers]="$HOME/.wallpapers"
 
+# Iterate over folders and copy their contents to the current directory
 for folder in "${folders[@]}"; do
-    cp -r "$folder" ./
-    echo "Copied: ${folder}"
+    # Use rsync for a more efficient and robust copying mechanism
+    rsync -r "$folder" ./
+    echo "Copied: $folder"
 done
 
-# Git add and commit
-function gitcommit() {
+# Define a function to perform Git operations
+git_commit() {
+    local message="$1"
+
+    # Stage all changes in the current directory
     git add .
-    git commit -m "$1"
-    git push -u origin
+
+    # Commit changes with the provided message
+    git commit -m "$message"
+
+    # Push changes to the origin repository
+    git push -u origin master
 }
 
-while [[ "$1" =~ ^- && ! "$1" == "--" ]]; do
+# Parse command-line arguments
+while [[ "$#" =~ ^- ]]; do
     case "$1" in
     -m | --message)
         shift
-        gitcommit "$1"
+            # Call the git_commit function with the message as an argument
+            git_commit "$1"
         ;;
     -v | --version)
-        echo "1.0"
+            echo "Version 1.2"
         ;;
     esac
     shift
 done
-if [[ "$1" == '--' ]]; then shift; fi
+
+# Handle remaining command-line arguments (if any)
+if [[ "$#" > 0 ]]; then
+    # Handle unknown or unsupported arguments
+    echo "Unknown argument: $1"
+fi
