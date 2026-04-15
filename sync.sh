@@ -15,6 +15,7 @@ folders[kitty]="$HOME/.config/kitty"
 folders[ohmyposh]="$HOME/.config/oh-my-posh"
 folders[CustomBinary]="$HOME/.local/bin"
 folders[wallpapers]="$HOME/.wallpapers"
+folders[bashrc]="$HOME/.bashrc"
 
 # Iterate over folders and copy their contents to the current directory
 for folder in "${folders[@]}"; do
